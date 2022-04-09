@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Record</title>
+
+        <style>
+            table, th, td, tr{
+                border: 1px solid white;
+                /* border-style: dotted; */
+                border-radius: 3px;
+                border-collapse: collapse;
+                padding: 2px 10px 2px 10px; 
+                min-width: 98.5px;
+                max-width: 360px;
+            }
+
+            td,th{
+                background-color: #96D4D4;
+                /* border-radius: 5px; */
+                text-align: left;
+            }
+
+            td{
+                overflow-x: scroll;
+            }
+
+            td::-webkit-scrollbar{
+                height: 0%;
+                width: 0%;
+            }
+
+            /* th,td{
+                border-radius: 8px;
+            } */
+
+            body{
+                font-family: satoshi;
+            }
+        </style>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelector('form').onsubmit = () => {
+                // event.preventDefault();
+                    const task = document.querySelector('#data').value;
+                    const tr=document.createElement('tr');
+                    const tdr=document.createElement('td');
+                    const tdt=document.createElement('td');
+                    
+                    const d= new Date();
+                    let h = d.getHours();
+                    let m = d.getMinutes();
+                    let s = d.getSeconds();
+                    let time = h + ":" + m + ":" + s;
+
+                    tdt.innerHTML=time;
+                    tdr.innerHTML=task;
+                    
+                    tr.append(tdr);
+                    tr.append(tdt)
+                    // console.log(task)
+                    document.querySelector('.clt').append(tr);
+
+                    return false;
+                }
+            });
+        </script>
+
+    </head>
+    <body>
+        <div style="margin: auto 40% auto 40%;">
+        <h1>Records</h1>
+        <form>
+            <input type="search" id="data">
+            <input type="submit">
+        </form>
+        <table class="clt" style="margin-top: 1%; border-radius: 5px;">
+            <tr style="text-align: left;">
+                <th>Record</th>
+                <th>Time</th>
+            </tr>
+            <!-- <td>this is list</td> -->
+        </table>
+        <!-- <script type="text/javascript" src="record.js"></script> -->
+        </div>
+    </body>
+</html>
